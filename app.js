@@ -39,7 +39,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Minden kérés loggolása
-app.use(morgan('dev', {
+app.use(morgan('combined', {
+  skip: (req, res) => res.statusCode < 400,
   stream: fs.createWriteStream('./access.log', {
     flags: 'a',
   }),

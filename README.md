@@ -24,3 +24,8 @@ Sorszámozott lista
     function(a) {
         return a+10;
     }
+    User Settings.jsonban beállítani
+    "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n"
