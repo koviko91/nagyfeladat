@@ -1,67 +1,70 @@
-const express = require('express')
-const path = require('path')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const db = require('./config/database')
-const helmet = require('helmet')
-const morgan = require('morgan')
-const fs = require('fs')
-/* const https = require('https');
+const express = require('express');
+// const path = require('path');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const db = require('./config/database');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const fs = require('fs');
+
+/* const https = require('https')
 const http = require('http'); */
 
-const postRouter = require('./routes/post.route')
-const app = express()
+const postRouter = require('./routes/post.route');
+
+const app = express();
 
 
 // Connect to MongoDB
 mongoose.connect(db.uri, db.options).then(
-    () => {
-        console.log('MongoDB connected.')
-    },
-    err => {
-        console.error('MongoDB error.:' + err)
-    }
-)
+  () => {
+    console.log('MongoDB connected.');
+  },
+  (err) => {
+    console.error(`MongoDB error.: ${err}`);
+  },
+);
 
 // Get view File Path
-/*function view (path) {
+/*  function view (path) {
   return __dirname + '/views/' + path
-}*/
+}   */
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
-    extended: false
-}))
+  extended: false,
+}));
 
 // Parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // Minden kérés loggolása
 app.use(morgan('dev', {
-    stream: fs.createWriteStream('./access.log', {
-        flags: 'a'
-    })
-}))
+  stream: fs.createWriteStream('./access.log', {
+    flags: 'a',
+  }),
+}));
 
 // basic secure
-app.use(helmet())
+app.use(helmet());
 
-// Start Browser-Sync ---erre most nics szkség mivel nincs views, és akor ha az változik akkor ujratöltené az oldalt
-if (app.get('env') === 'development') {
-    const browserSync = require('browser-sync')
-    const config = {
-        files: ['views/**/*.html'],
-        logLevel: 'info',
-        logSnippet: false,
-        reloadDelay: 3000,
-        reloadOnRestart: true
-    }
-    const bs = browserSync(config)
-    app.use(require('connect-browser-sync')(bs))
-}
+/* Start Browser-Sync ---erre most nics szkség mivel nincs views,
+ és akor ha az változik akkor ujratöltené az oldalt    */
+/* if (app.get('env') === 'development') {
+  const browserSync = require('browser-sync')
+  const config = {
+    files: ['views/** / *.html'],
+    logLevel: 'info',
+    logSnippet: false,
+    reloadDelay: 3000,
+    reloadOnRestart: true,
+  }
+  const bs = browserSync(config)
+  app.use(require('connect-browser-sync')(bs))
+} */
 
 // Home page
-app.use('/post', postRouter)
+app.use('/post', postRouter);
 
 // use https cert - git bash-t használj
 // openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
@@ -76,6 +79,6 @@ app.use('/post', postRouter)
 server.listen(3000, function () {
   console.log("server running at https://localhost:3000/")
 }); */
-app.listen(3000, function () {
-    console.log("server running at https://localhost:3000/")
+app.listen(3000, () => {
+  console.log('server running at https://localhost:3000/');
 });
