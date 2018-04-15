@@ -1,8 +1,9 @@
-const Post = require('../models/post.model');
+const User = require('../models/user.model');
 
 module.exports = {
   list: (req, res) => {
-    Post.find({}, (err, post) => {
+    // így lehet keresni
+    User.find({}, (err, post) => {
       if (err) {
         res.send(err);
       }
@@ -11,7 +12,7 @@ module.exports = {
   },
 
   find: (req, res) => {
-    Post.findById(req.params.id, (err, post) => {
+    User.findById(req.params.id, (err, post) => {
       if (err) {
         res.send(err);
       }
@@ -20,7 +21,7 @@ module.exports = {
   },
 
   create: (req, res) => {
-    Post.create(req.body, (err, post) => {
+    User.create(req.body, (err, post) => {
       if (err) {
         res.send(err);
       }
@@ -30,7 +31,7 @@ module.exports = {
 
   update: (req, res) => {
     req.body.updatedAt = new Date().toLocaleString();
-    Post.findByIdAndUpdate(req.params.id, req.body, (err, post) => {
+    User.findByIdAndUpdate(req.params.id, req.body, (err, post) => {
       if (err) {
         res.send(err);
       }
@@ -39,7 +40,7 @@ module.exports = {
   },
 
   remove: (req, res) => {
-    Post.findByIdAndRemove(req.params.id, (err, post) => {
+    User.findByIdAndRemove(req.params.id, (err, post) => {
       if (err) {
         res.send(err);
       }

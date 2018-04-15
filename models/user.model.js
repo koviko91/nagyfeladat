@@ -1,20 +1,24 @@
 const mongoose = require('mongoose');
 
-const PostSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   /* id: {
      type: mongoose.Schema.Types.ObjectId,
      default: new mongoose.Types.ObjectId()
    }, */
-  type: {
+  /*  type: {
     type: String,
     enum: ['Html', 'Css', 'JavaScript'],
     required: true,
-  },
-  title: {
+  }, */
+  email: {
     type: String,
     required: true,
   },
-  content: {
+  pass: {
+    type: String,
+    required: true,
+  },
+  name: {
     type: String,
     required: true,
   },
@@ -29,9 +33,9 @@ const PostSchema = new mongoose.Schema({
 });
 
 // Methods
-PostSchema.method({});
+UserSchema.method({});
 
 // Static Methods
-PostSchema.static({});
+UserSchema.static({});
 
-module.exports = mongoose.model('Post', PostSchema);
+module.exports = mongoose.model('User', UserSchema);

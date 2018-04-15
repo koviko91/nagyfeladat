@@ -1,8 +1,8 @@
 const host = 'localhost';
 const port = 27017;
-const user = 'root';
-const password = 'toor';
-const database = 'blog';
+const user = 'oliver';
+const password = 'qwer1234';
+const database = 'todolist';
 
 const options = {
   connectTimeoutMS: 2000,
@@ -14,7 +14,7 @@ const options = {
   bufferMaxEntries: 0,
 };
 
-const uri = `mongodb://${user}:${password}@${host}:${port}/${database}?authMechanism=SCRAM-SHA-1`;
+const uri = `mongodb://${user}:${password}@${host}:${port}/${database}`;
 
 module.exports = {
   uri,

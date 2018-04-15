@@ -29,3 +29,5 @@ Sorszámozott lista
   "editor.detectIndentation": false,
   "files.insertFinalNewline": true,
   "files.eol": "\n"
+  robomongo(törölni a végéről a '?authMechanism=SCRAM-SHA-1')
+  db.createUser({ user : "oliver", pwd : "qwer1234", roles : ["readWrite"] })

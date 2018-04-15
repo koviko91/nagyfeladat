@@ -10,11 +10,18 @@ const fs = require('fs');
 /* const https = require('https')
 const http = require('http'); */
 
-const postRouter = require('./routes/post.route');
+const userRouter = require('./routes/user.route');
+const todoRouter = require('./routes/todo.route');
+
 
 const app = express();
 
-
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 // Connect to MongoDB
 mongoose.connect(db.uri, db.options).then(
   () => {
@@ -49,37 +56,10 @@ app.use(morgan('combined', {
 // basic secure
 app.use(helmet());
 
-/* Start Browser-Sync ---erre most nics szkség mivel nincs views,
- és akor ha az változik akkor ujratöltené az oldalt    */
-/* if (app.get('env') === 'development') {
-  const browserSync = require('browser-sync')
-  const config = {
-    files: ['views/** / *.html'],
-    logLevel: 'info',
-    logSnippet: false,
-    reloadDelay: 3000,
-    reloadOnRestart: true,
-  }
-  const bs = browserSync(config)
-  app.use(require('connect-browser-sync')(bs))
-} */
-
 // Home page
-app.use('/post', postRouter);
+app.use('/user', userRouter);
+app.use('/todo', todoRouter);
 
-// use https cert - git bash-t használj
-// openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
-/* const httpsOptions = {
-    key: fs.readFileSync('./sslcert/key.pem', 'utf8'),
-    cert: fs.readFileSync('./sslcert/cert.pem', 'utf8'),
-    passphrase: 'qwer1234'
-}; */
-
-// Start server
-/* const server = https.createServer(httpsOptions, app)
-server.listen(3000, function () {
-  console.log("server running at https://localhost:3000/")
-}); */
 app.listen(3000, () => {
   console.log('server running at https://localhost:3000/');
 });
