@@ -1,9 +1,11 @@
 const User = require('../models/user.model');
 
 module.exports = {
-  list: (req, res) => {
-    // így lehet keresni
-    User.find({}, (err, post) => {
+  login: (req, res) => {
+    User.find({
+      email: req.body.email,
+      pass: req.body.pass,
+    }, (err, post) => {
       if (err) {
         res.send(err);
       }
@@ -21,11 +23,25 @@ module.exports = {
   },
 
   create: (req, res) => {
-    User.create(req.body, (err, post) => {
+    let found = 1;
+    User.find({
+      email: req.body.email,
+      pass: req.body.pass,
+    }, (err, post) => {
       if (err) {
         res.send(err);
       }
-      res.json(post);
+      found = post.length;
+      if (found === 0) {
+        User.create(req.body, (err1, post1) => {
+          if (err1) {
+            res.send(err1);
+          }
+          res.json([post1]);
+        });
+      } else {
+        res.json(post);
+      }
     });
   },
 
