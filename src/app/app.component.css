@@ -4,6 +4,33 @@
   color: #ffffff;
 }
 
+.btn-warning:hover {
+  background: #4D1E00;
+}
+
+.modal {
+  transition: 0.5s;
+}
+
+.modal-body span {
+  color: white;
+  background: #CF5300;
+  border-color: #CF5300;
+}
+
+.modal-content {
+  background: radial-gradient(circle, #EB5E00, #FF7619);
+  box-shadow: 0 0 40px black;
+}
+
+.modal-header {
+  border-color: #EB5E00;
+}
+
+.modal-footer {
+  border-color: #EB5E00;
+}
+
 .navbar {
   background: linear-gradient(#333333, #4D1E00);
 }
