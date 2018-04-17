@@ -3,7 +3,9 @@ const User = require('../models/todo.model');
 module.exports = {
   list: (req, res) => {
     // így lehet keresni
-    User.find({}, (err, post) => {
+    User.find({
+      userId: req.body.userId,
+    }, (err, post) => {
       if (err) {
         res.send(err);
       }

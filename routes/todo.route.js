@@ -4,12 +4,12 @@ const express = require('express');
 
 const todoRouter = express.Router();
 
-todoRouter.route('/')
-  .get(todoController.list)
+todoRouter.route('/get')
+  .post(todoController.list);
+todoRouter.route('/create')
   .post(todoController.create);
 
 todoRouter.route('/:id')
-  .get(todoController.find)
   .put(todoController.update)
   .delete(todoController.remove);
 
