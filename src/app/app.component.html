@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" routerLink="home">Határidőnapló</a>
+  <a class="navbar-brand" routerLink="todo">Határidőnapló</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,22 +7,27 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-item nav-link" routerLink="home">Főoldal</a>
+        <a class="nav-item nav-link" routerLink="home">
+          <i class="fas fa-home"></i> Főoldal</a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" routerLink="profile">Profil</a>
+        <a class="nav-item nav-link" routerLink="profile">
+          <i class="fas fa-user-circle"></i> Profil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" routerLink="knowledge">Tudásbázis</a>
+        <a class="nav-item nav-link" routerLink="knowledge">
+          <i class="fas fa-book"></i> Tudásbázis</a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" routerLink="api">RESTful API</a>
+        <a class="nav-item nav-link" routerLink="api">
+          <i class="fab fa-quinscape"></i> RESTful API</a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" routerLink="connect">Kapcsolat</a>
+        <a class="nav-item nav-link" routerLink="connect">
+          <i class="fas fa-plug"></i> Kapcsolat</a>
       </li>
     </ul>
-    <span *ngIf="logged" style="color:white">Üdv {{log[0].name}}! &nbsp; &nbsp; &nbsp; </span>
+    <span class="header-text" *ngIf="logged" style="color:white">Üdv {{log[0].name}}! &nbsp; &nbsp; &nbsp; </span>
     <button *ngIf="!logged" data-toggle="modal" data-target="#loginModal" class="btn btn-warning">Sign in</button>
     <button *ngIf="logged" (click)="signOut()" class="btn btn-warning">Sign out</button>
   </div>

@@ -40,6 +40,7 @@ export class AppComponent {
       console.log(this.log);
       localStorage.user = this.http.datas;
       this.logged = true;
+      location.reload();
       if (this.log == []) {
         this.logged = false;
       }
@@ -48,7 +49,9 @@ export class AppComponent {
   signOut() {
     this.logged = false;
     this.log = undefined;
+    this.http.todos = [];
     localStorage.removeItem("user");
+    location.reload();
   }
   register() {
     if (document.querySelector("#repass")['value'] == this.user['pass'] &&

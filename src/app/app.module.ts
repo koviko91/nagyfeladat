@@ -11,11 +11,13 @@ import { ProfileComponent } from './profile/profile.component';
 import { KnowledgeComponent } from './knowledge/knowledge.component';
 import { ApiComponent } from './api/api.component';
 import { ConnectComponent } from './connect/connect.component';
+import { TodolistComponent } from './todolist/todolist.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { component: HomeComponent, path: 'home' },
+  { component: TodolistComponent, path: 'todo' },
   { component: ProfileComponent, path: 'profile' },
   { component: KnowledgeComponent, path: 'knowledge' },
   { component: ApiComponent, path: 'api' },
@@ -28,7 +30,8 @@ const routes: Routes = [
     ProfileComponent,
     KnowledgeComponent,
     ApiComponent,
-    ConnectComponent
+    ConnectComponent,
+    TodolistComponent
   ],
   imports: [
     BrowserModule,

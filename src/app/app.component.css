@@ -12,7 +12,7 @@
   transition: 0.5s;
 }
 
-.modal-body span {
+.modal-body .header-text {
   color: white;
   background: #CF5300;
   border-color: #CF5300;
