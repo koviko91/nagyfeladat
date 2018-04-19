@@ -10,7 +10,7 @@ userRouter.route('/create')
 
 userRouter.route('/login')
   .post(userController.login);
-/* .put(userController.update)
-  .delete(userController.remove); */
+/* .delete(userController.remove); */
+userRouter.route('/login/:id').put(userController.update);
 
 module.exports = userRouter;
