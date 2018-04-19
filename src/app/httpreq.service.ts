@@ -29,10 +29,16 @@ export class HttpreqService {
         this.todos = this.todos.filter(item => item._id != x._id);
       });
   }
-  updateTodo(id, userData) {
-    this.http.put(`http://localhost:3000/todo/${id}`, userData).subscribe(
+  updateTodo(id, todoData) {
+    this.http.put(`http://localhost:3000/todo/${id}`, todoData).subscribe(
       async (data) => {
         /* console.log(data); */
+      });
+  }
+  updateUser(id, userData) {
+    this.http.put(`http://localhost:3000/user/login/${id}`, userData).subscribe(
+      async (data) => {
+        console.log(await data);
       });
   }
 }

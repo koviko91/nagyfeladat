@@ -14,10 +14,37 @@
 
 <body>
   <app-root></app-root>
+  <div class="container">
+    <div class="col-10 offset-1" id="map" style="height: 600px; width: 100%;"></div>
+  </div>
   <script src="node_modules/jquery/dist/jquery.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
     crossorigin="anonymous"></script>
+
+  <!--  <script>
+    function initMap() {
+      var uluru = {
+        lat: 47.461498,
+        lng: 19.053230
+      };
+      var mapOptions = {
+        zoom: 18,
+        center: uluru,
+        mapTypeId: 'satellite'
+      };
+      var map = new google.maps.Map(document.getElementById('map'),
+        mapOptions);
+
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+    }
+
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGhYDVwnHQpVzJ-UhwC-d2Xm-JPxeLbKg&callback=initMap"
+    type="text/javascript"></script> -->
 </body>
 
 </html>

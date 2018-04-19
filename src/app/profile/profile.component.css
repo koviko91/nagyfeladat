@@ -1,0 +1,18 @@
+.body-main-img {
+  max-height: 450px;
+  max-width: 300px;
+  box-shadow: 0 0 40px black;
+}
+
+.container {
+  margin-top: 10px;
+}
+
+.row {
+  margin: 0;
+}
+
+.text-center {
+  color: white;
+  text-shadow: 4px 4px 20px black;
+}

@@ -17,6 +17,7 @@ export class TodolistComponent implements OnInit {
   };
   createNew: boolean = false;
   constructor(public http: HttpreqService) {
+    document.getElementById('map').style.display = 'none';
     if (localStorage.user) {
       this.user = JSON.parse(localStorage.user);
       this.logged = true;

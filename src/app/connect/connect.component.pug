@@ -1,0 +1,50 @@
+.container
+  h2.text-center Elérhetőségeink:
+  br
+  .col-10.offset-1
+    #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+      ol.carousel-indicators
+        li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+        li(data-target='#carouselExampleIndicators', data-slide-to='1')
+        li(data-target='#carouselExampleIndicators', data-slide-to='2')
+      .carousel-inner 
+        .carousel-item.active
+          img.d-block.w-100(src='/src/app/connect/yw1.jpg?auto=yes&bg=777&fg=555&text=First slide', alt='Cím')
+          .carousel-caption.d-none.d-md-block
+            h3 Cím:
+            p Budapest, Budafoki út 56, 1117
+        .carousel-item
+          img.d-block.w-100(src='/src/app/connect/yw2.jpg?auto=yes&bg=666&fg=444&text=Second slide', alt='Telefonszám')
+          .carousel-caption.d-none.d-md-block
+            h3 Telefonszám:
+            p (1) 880 0040
+        .carousel-item
+          img.d-block.w-100(src='/src/app/connect/yw3.jpg?auto=yes&bg=555&fg=333&text=Third slide', alt='Email')
+          .carousel-caption.d-none.d-md-block
+            h3 E-mail cím
+            p yellow@training360.com
+      a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.sr-only Previous
+      a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.sr-only Next
+  br
+  br
+  h3.text-center Üzenj nekünk!
+  .col-6.offset-3
+    label.text-center(for="name1") Add meg a neved!
+    input.form-control(type="text" id="name1")
+    label.text-center(for="email1") Add meg az e-mail címedet!
+    input.form-control(type="text" id="email1")
+    label.text-center(for="valami1") Írd le kérdéseid, észrevételeidet!
+    textarea.form-control(name="valami1", cols="30", rows="10" id="valami1")
+    br
+    .btn-group
+      button.btn.btn-success(type="reset") Elküld
+      button.btn.btn-danger(type="reset") Reset
+    br
+    br
+  h2.text-center Gyere el hozzánk!
+  agm-map([latitude]='lat', [longitude]='lng')
+    agm-marker([latitude]='lat', [longitude]='lng')

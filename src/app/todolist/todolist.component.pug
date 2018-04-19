@@ -1,64 +1,64 @@
 extends layout
 block body
   div(*ngIf="logged")
-    table.table.table-striped.table-dark.text-center
-      thead
-        tr
-          th 
-           i(class="fab fa-readme")
-           | &nbsp; Feladat megnevezése
-          th
-            i(class="fas fa-step-forward")
-            | &nbsp; Feladat állapota
-          th 
-            i(class="fas fa-pen-square")
-            | &nbsp; Feladat leírása
-          th 
-            i(class="fas fa-clock")
-            | &nbsp; Létrehozás időpontja
-          th 
-            i(class="far fa-clock")
-            | &nbsp; Utolsó módosítás időpontja
-          th 
-            button.btn.btn-warning((click)="newTo()")
-              i.far.fa-calendar-plus
-              | &nbsp; Új létrehozása
-      tbody(*ngIf="http.todos")
-        tr(*ngIf="createNew")
-          td
-            input.form-control(type="text", [(ngModel)]="newTodo.name")
-          td
-            select.form-control(name="status",[(ngModel)]="newTodo.status")
+    .card(style='width: 99%; margin:5px;',*ngIf="createNew")
+      .card-body
+        h5.card-title 
+          i(class="fab fa-readme")
+          | &nbsp; Feladat megnevezése
+        input.form-control(type="text", [(ngModel)]="newTodo.name")
+        br
+        h6.card-subtitle.mb-2.text-muted 
+          i(class="fas fa-step-forward")
+          | &nbsp; Feladat állapota
+        select.form-control(name="status",[(ngModel)]="newTodo.status")
               option(value="new") New
               option(value="started") Started
               option(value="finished") Finished
               option(value="deleted") Deleted
-          td
-            input.form-control(type="text", [(ngModel)]="newTodo.text")
-          td -
-          td -
-          td 
-            button.btn.btn-primary((click)="create()") Új feladat mentése!
-        tr(*ngFor="let x of http.todos")
-          td {{x.name}}
-          td {{x.status}}
-          td {{x.text}}
-          td {{x.createdAt}}
-          td {{x.updatedAt}}
-          td
-            .btn-group(*ngIf="sure==0")
-              button.btn.btn-warning((click)="edit(2,x._id)") 
-                i.far.fa-edit
-                | &nbsp;Módosítás
-              button.btn.btn-danger((click)="edit(1)") 
-                i.far.fa-trash-alt
-                | &nbsp;Törlés
-            .btn-group(*ngIf="sure==1")
-              button.btn.btn-danger((click)="deleteRow(x._id)")  Töröld!
-              button.btn.btn-warning((click)="edit(0)") Vissza!
-            .btn-group(*ngIf="sure==2")
-              button.btn.btn-success((click)="updateRow(x)")  Ezt módosítsd!
-              button.btn.btn-warning((click)="edit(0)") Vissza!
+        p.card-text 
+          i(class="fas fa-pen-square")
+          | &nbsp; Feladat leírása
+        textarea.form-control(name="", cols="30", rows="10", [(ngModel)]="newTodo.text")
+        br
+        button.btn.btn-primary((click)="create()") Új feladat mentése!
+    .col-md-4(*ngFor="let x of http.todos")
+      .card
+        .card-body
+          h5.card-title 
+            | {{x.name}}
+          h6.card-subtitle.mb-2.text-muted
+            i(class="fas fa-step-forward")
+            | &nbsp; {{x.status}}
+          p.card-text
+            i(class="fas fa-pen-square")
+            | &nbsp;{{x.text}}
+          p.card-text
+            i(class="fas fa-clock")
+            | &nbsp;Létrehozva:
+            | &nbsp;{{x.createdAt}}
+          p.card-text
+            i(class="far fa-clock")
+            | &nbsp;Utoljára Módosítva:
+            | &nbsp;{{x.updatedAt}}
+          .btn-group(*ngIf="sure==0")
+            button.btn.btn-warning((click)="edit(2,x._id)") 
+              i.far.fa-edit
+              | &nbsp;Módosítás
+            button.btn.btn-danger((click)="edit(1)") 
+              i.far.fa-trash-alt
+              | &nbsp;Törlés
+          .btn-group(*ngIf="sure==1")
+            button.btn.btn-danger((click)="deleteRow(x._id)")  Töröld!
+            button.btn.btn-warning((click)="edit(0)") Vissza!
+          .btn-group(*ngIf="sure==2")
+            button.btn.btn-success((click)="updateRow(x)")  Ezt módosítsd!
+            button.btn.btn-warning((click)="edit(0)") Vissza!
+    button.btn.btn-block.btn-warning((click)="newTo()")
+      i.far.fa-calendar-plus
+      | &nbsp; Új létrehozása
+    
+    
                 
                     
     

@@ -1,4 +1,29 @@
 extends layout
 block append header
-  p(*ngIf="te") semmi
+  .valami(*ngIf="logged")
+    h5  Your E-mail address ({{log[0].email}}): 
+    .input-group.mb-3
+      .input-group-prepend
+        span#basic-addon1.input-group-text
+          i.far.fa-user
+      input#email2.form-control(type='text', placeholder='valami@valami.hu', [(ngModel)]="editUser.email")
+    label(for='pass1') Your Password:
+    .input-group.mb-3
+      .input-group-prepend
+        span#basic-addon2.input-group-text
+          i.fas.fa-key
+      input#pass1.form-control(type='password', placeholder='Password', [(ngModel)]="pass1")
+    label(for='pass2') Re-type Your Password:
+    .input-group.mb-3
+      .input-group-prepend
+        span#basic-addon2.input-group-text
+          i.fas.fa-key
+      input#pass2.form-control(type='password', placeholder='Re-type Password', [(ngModel)]="pass2")
+    label(for='name') Your Nickname ({{log[0].name}}):
+    .input-group.mb-3
+      .input-group-prepend
+        span#basic-addon2.input-group-text
+          i.fas.fa-user-secret
+      input#name.form-control(type='text', placeholder='Nickname', [(ngModel)]="editUser.name")
+    button.btn.btn-block.btn-danger((click)="update()") Módosítás!
   

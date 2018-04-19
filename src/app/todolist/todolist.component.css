@@ -40,3 +40,12 @@
 .btn-warning:hover {
   background: #4D1E00;
 }
+
+.col-md-4 {
+  display: inline-block;
+  padding: 5px;
+}
+
+.card {
+  background: #ff9101;
+}
