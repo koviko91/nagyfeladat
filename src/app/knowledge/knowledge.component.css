@@ -1,1 +1,7 @@
-
+.container {
+  border-radius: 10px;
+  box-shadow: 0 0 40px black;
+  margin-top: 10px;
+  padding: 20px;
+  background: url('/src/app/home/img/bg-pattern.png')
+}

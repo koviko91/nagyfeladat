@@ -14,6 +14,8 @@ export class AppComponent {
   logreg: number = -1;
   log: any;
   logged: boolean = false;
+  diff: number = 0;
+  name: string = "";
   user: object = {
     email: "",
     pass: "",
@@ -23,7 +25,24 @@ export class AppComponent {
     if (localStorage.user) {
       this.log = JSON.parse(localStorage.user);
       this.logged = true;
+      this.http.getTodo(this.log[0]._id);
+      this.findUrgent();
     }
+  }
+  findUrgent() {
+    setTimeout(() => {
+      let x = this.http.todos;
+      let min = new Date(2100000000000).getTime();
+      console.log(min, x);
+      for (let i in x) {
+        if (new Date(x[i].deadline).getTime() < min) {
+          min = new Date(x[i].deadline).getTime();
+          this.name = x[i].name;
+        }
+      };
+      this.diff = Math.floor((min - new Date().getTime()) / 1000 / 60 / 60);
+      console.log(this.diff, this.name);
+    }, 500);
   }
   switchRegLog() {
     this.modalTitle = this.modalTitle == "Register" ? "Login" : "Register";
@@ -62,33 +81,6 @@ export class AppComponent {
   login(): any {
     this.http.login({ email: this.user['email'], pass: this.user['pass'] });
   }
-
-
-  /* create() {
-    this.http.post('http://localhost:3000/user/', this.adat).subscribe(
-      data => {
-        this.errorHandling(data);
-      });
-  }
-
-  update() {
-    this.http.put(`http://localhost:3000/user/${this.modal['id']}`, this.modal)
-      .subscribe(data => {
-        this.errorHandling(data);
-      });
-  }
-
-  deleteRow(id) {
-    this.http.delete(`http://localhost:3000/user/${id}`)
-      .subscribe(data => {
-        this.errorHandling(data);
-      });
-  }
-
-  modalChange(id) {
-    let choosen = this.datas.filter(item => item.id == id)[0];
-    this.modal = Object.assign({}, choosen);
-  } */
 }
 
 

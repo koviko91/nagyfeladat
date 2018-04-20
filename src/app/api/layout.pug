@@ -1,5 +1,8 @@
 .container
-  block header
+  button.btn.btn-block.btn-primary((click)="help()") Segítség!!!
+  div(*ngIf="helper")  
+    br
+    block help
+.container
+  block update
     h3.text-center Felhasználói adatok módosítása
-
-

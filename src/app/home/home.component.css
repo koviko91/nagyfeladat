@@ -1,0 +1,22 @@
+.container {
+  background: url('/src/app/home/img/bg-pattern.png');
+  border-radius: 10px;
+  box-shadow: 0 0 40px black;
+  color: black;
+  margin-top: 10px;
+  padding: 20px;
+  text-shadow: 2px 2px 5px grey;
+}
+
+.progress {
+  margin: 10px;
+  background: none;
+}
+
+.progress-bar-striped {
+  transition: 0.5s;
+}
+
+hr {
+  width: 50%;
+}

@@ -1,6 +1,9 @@
 extends layout
 block body
   div(*ngIf="logged")
+    button.btn.btn-block.btn-warning((click)="newTo()")
+      i.far.fa-calendar-plus
+      | &nbsp; Új létrehozása
     .card(style='width: 99%; margin:5px;',*ngIf="createNew")
       .card-body
         h5.card-title 
@@ -20,6 +23,10 @@ block body
           i(class="fas fa-pen-square")
           | &nbsp; Feladat leírása
         textarea.form-control(name="", cols="30", rows="10", [(ngModel)]="newTodo.text")
+        p.card-text 
+          i(class="fas fa-exclamation")
+          | &nbsp; Feladat elvégzésére adott napok száma
+        input.form-control(type="text", [(ngModel)]="newTodo.deadline")
         br
         button.btn.btn-primary((click)="create()") Új feladat mentése!
     .col-md-4(*ngFor="let x of http.todos")
@@ -33,6 +40,10 @@ block body
           p.card-text
             i(class="fas fa-pen-square")
             | &nbsp;{{x.text}}
+          p.card-text(style="color:red")
+            i(class="fas fa-exclamation")
+            | &nbsp; Határidő:
+            | &nbsp;{{x.deadline}}
           p.card-text
             i(class="fas fa-clock")
             | &nbsp;Létrehozva:
@@ -54,9 +65,7 @@ block body
           .btn-group(*ngIf="sure==2")
             button.btn.btn-success((click)="updateRow(x)")  Ezt módosítsd!
             button.btn.btn-warning((click)="edit(0)") Vissza!
-    button.btn.btn-block.btn-warning((click)="newTo()")
-      i.far.fa-calendar-plus
-      | &nbsp; Új létrehozása
+    
     
     
                 

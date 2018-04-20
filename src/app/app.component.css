@@ -8,6 +8,16 @@
   background: #4D1E00;
 }
 
+.footer {
+  background: linear-gradient(#333333, #4D1E00);
+  bottom: 0px;
+  color: white;
+  height: 40px;
+  padding: 5px;
+  position: fixed;
+  width: 100%;
+}
+
 .modal {
   transition: 0.5s;
 }
@@ -33,4 +43,10 @@
 
 .navbar {
   background: linear-gradient(#333333, #4D1E00);
+}
+
+@media (max-height: 600px) {
+  footer {
+    display: none;
+  }
 }

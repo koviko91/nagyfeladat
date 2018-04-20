@@ -1,12 +1,13 @@
 extends layout
-block append header
+block append update
+  div.text-center.body-warning-text(*ngIf="!logged") Kérlek jelentkezz be, hogy használhass!!!
   .valami(*ngIf="logged")
     h5  Your E-mail address ({{log[0].email}}): 
     .input-group.mb-3
       .input-group-prepend
         span#basic-addon1.input-group-text
           i.far.fa-user
-      input#email2.form-control(type='text', placeholder='valami@valami.hu', [(ngModel)]="editUser.email")
+      input#email2.form-control(type='email', placeholder='valami@valami.hu', [(ngModel)]="editUser.email")
     label(for='pass1') Your Password:
     .input-group.mb-3
       .input-group-prepend
@@ -26,4 +27,58 @@ block append header
           i.fas.fa-user-secret
       input#name.form-control(type='text', placeholder='Nickname', [(ngModel)]="editUser.name")
     button.btn.btn-block.btn-danger((click)="update()") Módosítás!
-  
+    .alert.alert-danger(role='alert')
+      | Nem sikerült móosítani az adataidat!
+block help
+  h3.text-center Használai útmutató
+  h5.text-center  Első lépés
+  .row
+    .col-md-6
+      img(src="/src/app/api/img/sign1.PNG", alt="sign button")
+    .col-md-6
+      ol
+        li Kattints a "SignIn" gombra a jobb felső sarokban!!!
+  h5.text-center  Ha már regisztráltál
+  .row
+    .col-md-6
+      img(src="/src/app/api/img/login1.PNG", alt="login page")
+    .col-md-6
+      ol
+        li Ha regisztrálni szeretnél kattints a "register page" gombra!!
+        li Add meg az e-mail címed!!
+        li Add meg a jelszavad!!
+        li Kattints a "Sign In" gombra!!
+  h5.text-center  Ha még nem regisztráltál
+  .row
+    .col-md-6
+      img(src="/src/app/api/img/reg1.PNG", alt="register page")
+    .col-md-6
+      ol
+        li Add meg az e-mail címed!!
+        li Add meg a jelszavad!!
+        li Ismételd meg a jelszavad!!
+        li Adj meg egy az oldalon használni kívánt becenevet!!
+        li Kattints a "Create new Account" gombra!!
+  h5.text-center  Belépve
+  .row
+    .col-md-6
+      img(src="/src/app/api/img/sign2.PNG", alt="sign button")
+    .col-md-6
+      ol
+        li Ha Sikerült regisztrálnod vagy belépned akkor ezt kell látnod( a saját beceneveddel).
+        li A határdőnapló funkciót,csak így tudod használni
+        li Természetesen az ezen az oldalon található felhasználó adatmódosítást is csak ezt követően tudod megtenni.
+  h5.text-center  Felhasználói adatok módosítása
+  .row
+    .col-md-6
+      img(src="/src/app/api/img/update1.PNG", alt="sign button")
+    .col-md-6
+      ol
+        li Ha az email-címedet szeretnéd módosítani tölts ki az "Your email address"  mezőt!
+        li Ha az jelszavadat szeretnéd módosítani tölts ki a "Your Pasword" és a "Re-type Your Password" a mezőt!
+        li Fontos hogy a két jelszónak meg kell egyeznie különben nem fog módosulni.
+        li Ha a becenevedet szeretnéd módosítani tölts ki "Nickname" mezőt!
+        li Ha bármelyik mezőt üresen hagyod akkor azok az adatok nem fognak módosulni(jelszónál mindekettő legyen üres)
+        li Végül kattints a Módosítás gombra!
+       
+        

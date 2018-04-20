@@ -14,6 +14,7 @@ export class TodolistComponent implements OnInit {
     name: "",
     status: "",
     text: "",
+    deadline: 1
   };
   createNew: boolean = false;
   constructor(public http: HttpreqService) {
@@ -35,7 +36,10 @@ export class TodolistComponent implements OnInit {
     this.newTodo.userId = this.user[0]._id;
     this.newTodo.createdAt = new Date();
     this.newTodo.updatedAt = new Date();
+    this.newTodo.deadline = new Date(new Date().getTime() + this.newTodo.deadline * 86400000);
     this.http.createTodo(this.newTodo);
+    this.newTodo.deadline = 1;
+    location.reload();
   }
   newTo() {
     this.createNew = !this.createNew;
@@ -64,10 +68,12 @@ export class TodolistComponent implements OnInit {
       updatedAt: new Date()
     }
     this.http.updateTodo(userdata._id, editedUser);
-    this.getAll();
+    /* this.getAll(); */
+    location.reload();
   }
   deleteRow(id) {
     this.http.deleteTodo(id);
     this.sure = 0;
+    location.reload();
   }
 }

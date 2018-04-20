@@ -11,11 +11,11 @@ agm-map {
 }
 
 .container {
-  background: #CF5300;
   margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 40px black;
+  background: url('/src/app/home/img/bg-pattern.png')
 }
 
 .text-center {

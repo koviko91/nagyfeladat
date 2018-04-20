@@ -1,8 +1,38 @@
+.alert-danger,
+.alert-primary {
+  display: none;
+}
+
+.body-warning-text {
+  animation-name: simple;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  background: radial-gradient( #E84D3C, #FBB80C);
+  border-radius: 10px;
+  box-shadow: 0 0 30px black;
+  color: white;
+  margin: 0 auto;
+  text-shadow: 4px 4px 5px black;
+  width: 75%;
+}
+
+@keyframes simple {
+  0% {
+    font-size: 20px;
+  }
+  50% {
+    font-size: 40px;
+  }
+  100% {
+    font-size: 20px;
+  }
+}
+
 .container {
-  background: #CF5300;
   border-radius: 10px;
   box-shadow: 0 0 40px black;
   color: white;
   margin-top: 10px;
   padding: 20px;
+  background: url('/src/app/home/img/bg-pattern.png')
 }
