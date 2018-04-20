@@ -65,6 +65,7 @@ export class TodolistComponent implements OnInit {
       name: this.newTodo.name,
       status: this.newTodo.status,
       text: this.newTodo.text,
+      deadline: new Date(new Date().getTime() + this.newTodo.deadline * 86400000),
       updatedAt: new Date()
     }
     this.http.updateTodo(userdata._id, editedUser);
