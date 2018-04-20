@@ -26,6 +26,10 @@ const TodoSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  deadline: {
+    type: Date,
+    default: new Date(new Date().getTime() + 86400000),
+  },
 });
 
 // Methods
