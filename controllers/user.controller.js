@@ -26,6 +26,7 @@ module.exports = {
     let found = 1;
     User.find({
       email: req.body.email,
+      pass: req.body.pass,
     }, (err, post) => {
       if (err) {
         res.send(err);
