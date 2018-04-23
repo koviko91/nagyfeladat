@@ -26,23 +26,20 @@ export class AppComponent {
       this.log = JSON.parse(localStorage.user);
       this.logged = true;
       this.http.getTodo(this.log[0]._id);
-      this.findUrgent();
+      setInterval(() => this.findUrgent(), 1000);
+
     }
   }
   findUrgent() {
-    setTimeout(() => {
-      let x = this.http.todos;
-      let min = new Date(2100000000000).getTime();
-      console.log(min, x);
-      for (let i in x) {
-        if (new Date(x[i].deadline).getTime() < min) {
-          min = new Date(x[i].deadline).getTime();
-          this.name = x[i].name;
-        }
-      };
-      this.diff = Math.floor((min - new Date().getTime()) / 1000 / 60 / 60);
-      console.log(this.diff, this.name);
-    }, 500);
+    let x = this.http.todos;
+    let min = new Date(2100000000000).getTime();
+    for (let i in x) {
+      if (new Date(x[i].deadline).getTime() < min) {
+        min = new Date(x[i].deadline).getTime();
+        this.name = x[i].name;
+      }
+    };
+    this.diff = Math.floor((min - new Date().getTime()) / 1000 / 60 / 60);
   }
   switchRegLog() {
     this.modalTitle = this.modalTitle == "Register" ? "Login" : "Register";

@@ -39,7 +39,6 @@ export class TodolistComponent implements OnInit {
     this.newTodo.deadline = new Date(new Date().getTime() + this.newTodo.deadline * 86400000);
     this.http.createTodo(this.newTodo);
     this.newTodo.deadline = 1;
-    location.reload();
   }
   newTo() {
     this.createNew = !this.createNew;
@@ -61,6 +60,7 @@ export class TodolistComponent implements OnInit {
   }
   updateRow(userdata) {
     this.sure = 0;
+
     let editedUser = {
       name: this.newTodo.name,
       status: this.newTodo.status,
@@ -69,12 +69,13 @@ export class TodolistComponent implements OnInit {
       updatedAt: new Date()
     }
     this.http.updateTodo(userdata._id, editedUser);
-    /* this.getAll(); */
     location.reload();
+    /* this.getAll(); */
+
   }
   deleteRow(id) {
     this.http.deleteTodo(id);
     this.sure = 0;
-    location.reload();
+
   }
 }
